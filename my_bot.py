@@ -10,7 +10,7 @@ async def auto_delete(update: Update, context: ContextTypes.DEFAULT_TYPE):
 app = ApplicationBuilder().token(TOKEN).build()
 
 # Faqat URL larni o'chiradi
-app.add_handler(MessageHandler(filters.URL, auto_delete))
+app.add_handler(MessageHandler(filters.TEXT & filters.Regex(r'https?://'), auto_delete))
 
 print("Bot ishlayapti...")
 app.run_polling()
